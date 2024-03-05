@@ -1,17 +1,31 @@
 package com.club.eliteclub;
 
+import com.club.eliteclub.service.EliteClubService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EliteclubApplication {
+public class EliteclubApplication implements ApplicationRunner {
 
-	private static Logger logger = LoggerFactory.getLogger(EliteclubApplication.class);
+	@Autowired
+	private EliteClubService eliteClubService;
+	private static final Logger logger = LoggerFactory.getLogger(EliteclubApplication.class);
 	public static void main(String[] args) {
 		logger.info("Starting EliteClubApplication ....");
 		SpringApplication.run(EliteclubApplication.class, args);
+	}
+
+	@Override
+	public void run(ApplicationArguments args) {
+
+		// Code to be executed after the application context is fully loaded
+		System.out.println("Executing ApplicationRunner with args: " + args.getOptionNames());
+		eliteClubService.addClub("Billionaire", "Environmentalist", "Poker");
 	}
 
 }
