@@ -29,4 +29,13 @@ public class EliteClubService {
             eliteClubRepo.save(club);
         });
     }
+
+    public List<ClubDTO> searchByName(String name){
+        return eliteClubRepo.findByName(buildLikePattern(name)).stream().map(eliteClub -> new ClubDTO(eliteClub.getClubName()))
+                .collect(Collectors.toList());
+    }
+
+    private String buildLikePattern(String searchTerm) {
+        return searchTerm.toLowerCase() + "%";
+    }
 }
