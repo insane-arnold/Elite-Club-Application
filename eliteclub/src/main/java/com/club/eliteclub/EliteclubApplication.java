@@ -28,7 +28,7 @@ public class EliteclubApplication implements ApplicationRunner {
 
 		// Code to be executed after the application context is fully loaded
 		System.out.println("Executing ApplicationRunner with args: " + args.getOptionNames());
-		eliteClubService.addClub("Billionaire", "Environmentalist", "Poker");
+		eliteClubService.addClub("Billionaire", "Environmentalist", "Poker", "Biscep");
 		List<ClubDTO> clubList = eliteClubService.searchByName("Bi");
 		clubList.forEach(clubDTO -> logger.info("ClubName: {}", clubDTO.getClubName()));
 	}
