@@ -30,7 +30,7 @@ public class EliteclubApplication implements ApplicationRunner {
 		System.out.println("Executing ApplicationRunner with args: " + args.getOptionNames());
 		eliteClubService.addClub("Billionaire", "Environmentalist", "Poker");
 		List<ClubDTO> clubList = eliteClubService.searchByName("Bi");
-		clubList.stream().forEach(clubDTO -> logger.info("ClubName: {}", clubDTO.getClubName()));
+		clubList.forEach(clubDTO -> logger.info("ClubName: {}", clubDTO.getClubName()));
 	}
 
 }
